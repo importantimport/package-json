@@ -1,0 +1,19 @@
+{
+  "name": "@package-json/workspace",
+  "private": true,
+  "type": "module",
+  "author": "藍+85CD",
+  "license": "MIT",
+  "packageManager": "pnpm@9.9.0",
+  "scripts": {
+    "lint": "eslint --flag unstable_ts_config .",
+    "lint:fix": "eslint --flag unstable_ts_config --fix ."
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.0.0",
+    "@importantimport/eslint-config": "1.0.0-alpha.1",
+    "@importantimport/tsconfig": "^0.1.1",
+    "eslint": "^9.9.1",
+    "jiti": "^1.21.6"
+  }
+}
