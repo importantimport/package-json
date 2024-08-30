@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint --flag unstable_ts_config .",
-    "lint:fix": "eslint --flag unstable_ts_config --fix ."
+    "lint:fix": "eslint --flag unstable_ts_config --fix .",
+    "release": "bumpp --all --commit \"chore: release v%s\" --tag \"%s\""
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.0.0",
@@ -15,6 +16,7 @@
     "@importantimport/tsconfig": "^0.1.1",
     "@types/eslint": "^9.6.1",
     "@types/node": "^22.5.1",
+    "bumpp": "^9.5.2",
     "eslint": "^9.9.1",
     "jiti": "^1.21.6",
     "pkgroll": "^2.4.2",
