@@ -41,3 +41,7 @@ export default sort(packageJson)
 ```
 
 <!-- /automd -->
+
+## License
+
+[MIT](../../LICENSE.md)

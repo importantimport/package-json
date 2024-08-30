@@ -8,7 +8,7 @@ Opinionated `package.json` sorter.
 npx @package-json/sort
 ```
 
-## license
+## License
 
 [MIT](LICENSE.md)
 
