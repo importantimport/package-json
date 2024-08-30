@@ -5,10 +5,10 @@ import { cwd } from 'node:process'
 import type { PackageJson } from './config'
 
 import { config } from './config'
+import { getScope } from './utils'
 
 export const create = () =>
   sort({
-    /** TODO: @scope */
-    name: basename(cwd()),
+    name: getScope(config.name) + basename(cwd()),
     version: config.version,
   }) satisfies PackageJson

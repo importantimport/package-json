@@ -7,7 +7,7 @@ describe('create', () => {
     const json = create()
 
     expect(json).toStrictEqual({
-      name: 'create',
+      name: '@package-json/create',
       version: undefined,
     })
   })
