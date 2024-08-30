@@ -6,6 +6,7 @@
   "author": "藍+85CD",
   "license": "MIT",
   "scripts": {
+    "automd": "automd && corepack pnpm -r exec automd",
     "lint": "eslint --flag unstable_ts_config .",
     "lint:fix": "eslint --flag unstable_ts_config --fix .",
     "release": "bumpp --all --commit \"chore: release v%s\" --tag \"%s\""
@@ -16,6 +17,7 @@
     "@importantimport/tsconfig": "^0.1.1",
     "@types/eslint": "^9.6.1",
     "@types/node": "^22.5.1",
+    "automd": "^0.3.8",
     "bumpp": "^9.5.2",
     "eslint": "^9.9.1",
     "jiti": "^1.21.6",
