@@ -10,6 +10,7 @@ import { getScope } from './utils'
 export const create = () =>
   sort({
     name: getScope(config.name) + basename(cwd()),
+    private: config.private,
     type: config.type,
     version: config.version,
   }) satisfies PackageJson
