@@ -8,6 +8,7 @@ import { order } from './order'
 export const sort = (packageJson: Record<string, unknown>) =>
   Object.fromEntries(
     Object.entries(packageJson)
+      .filter(([_, value]) => !!value)
       .sort(([keyA], [keyB]) =>
         order.indexOf(keyA) - order.indexOf(keyB),
       ),
