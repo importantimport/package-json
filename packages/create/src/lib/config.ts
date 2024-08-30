@@ -2,6 +2,7 @@ import { loadConfig } from 'unconfig'
 
 export interface PackageJson extends Record<string, unknown> {
   name?: string
+  type?: 'commonjs' | 'module'
   version?: string
 }
 
