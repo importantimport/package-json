@@ -8,7 +8,12 @@ import { config } from './config'
 import { createExports } from './create-exports'
 import { getScope } from './utils'
 
-export const create = () =>
+/**
+ * Create package json
+ * @param json package json overrides
+ * @returns package json
+ */
+export const create = (json: PackageJson = {}) =>
   sort({
     ...config,
     ...createExports(config),
@@ -16,4 +21,5 @@ export const create = () =>
     private: config.private,
     type: config.type,
     version: config.version,
+    ...json,
   }) satisfies PackageJson
