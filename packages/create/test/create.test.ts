@@ -8,6 +8,15 @@ describe('create', () => {
     const json = create()
 
     expect(json).toStrictEqual(sort({
+      exports: {
+        '.': {
+          default: './dist/index.mjs',
+          types: './dist/index.d.mts',
+        },
+        './package.json': './package.json',
+      },
+      files: ['dist'],
+      main: './dist/index.mjs',
       name: '@package-json/create',
       type: 'module',
     }))

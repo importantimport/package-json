@@ -1,11 +1,6 @@
 import { loadConfig } from 'unconfig'
 
-export interface PackageJson extends Record<string, unknown> {
-  name?: string
-  private?: boolean
-  type?: 'commonjs' | 'module'
-  version?: string
-}
+import type { PackageJson } from './types'
 
 export const { config } = await loadConfig<PackageJson>({
   sources: [
@@ -25,7 +20,16 @@ export const { config } = await loadConfig<PackageJson>({
       parser: 'json',
       rewrite: pkg => ({
         ...pkg,
+        bin: undefined,
+        dependencies: undefined,
+        devDependencies: undefined,
+        exports: undefined,
+        main: undefined,
+        module: undefined,
+        peerDependencies: undefined,
         private: undefined,
+        scripts: undefined,
+        types: undefined,
       }),
     },
   ],
