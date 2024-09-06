@@ -1,5 +1,13 @@
 # @package-json
 
+## [create](packages/create/)
+
+Zero-config `package.json` creator.
+
+```bash
+npm create @package-json
+```
+
 ## [sort](packages/sort/)
 
 Opinionated `package.json` sorter.
@@ -16,6 +24,6 @@ npx @package-json/sort
 
 ---
 
-_🤖 auto updated with [automd](https://automd.unjs.io) (last updated: Fri Aug 30 2024)_
+_🤖 auto updated with [automd](https://automd.unjs.io) (last updated: Fri Sep 06 2024)_
 
 <!-- /automd -->
