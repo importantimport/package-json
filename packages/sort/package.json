@@ -1,10 +1,6 @@
 {
   "name": "@package-json/sort",
   "type": "module",
-  "bin": "./dist/bin.js",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": ["dist"],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -12,6 +8,12 @@
     },
     "./package.json": "./package.json"
   },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": "./dist/bin.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "pkgroll",
     "test": "vitest run",
