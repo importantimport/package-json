@@ -12,14 +12,14 @@
     "release": "bumpp --all --commit \"chore: release v%s\" --tag \"%s\""
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.0.0",
-    "@importantimport/eslint-config": "1.0.0-alpha.1",
+    "@antfu/eslint-config": "^3.3.2",
+    "@importantimport/eslint-config": "1.0.0-alpha.2",
     "@importantimport/tsconfig": "^0.1.1",
     "@types/eslint": "^9.6.1",
-    "@types/node": "^22.5.1",
+    "@types/node": "^22.5.4",
     "automd": "^0.3.8",
     "bumpp": "^9.5.2",
-    "eslint": "^9.9.1",
+    "eslint": "^9.10.0",
     "jiti": "^1.21.6",
     "pkgroll": "^2.4.2",
     "vitest": "^2.0.5"
