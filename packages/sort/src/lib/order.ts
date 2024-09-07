@@ -1,4 +1,5 @@
 import { sortDependencies } from './sort-dependencies'
+import { sortFiles } from './sort-files'
 
 /** @see {@link https://github.com/antfu/eslint-config/blob/d2f6c0bd7887764f9778cba3722110dbb0e0027e/src/configs/sort.ts#L25-L68} */
 export const order = [
@@ -30,7 +31,7 @@ export const order = [
   'typesVersions',
   'bin',
   'icon',
-  'files',
+  { key: 'files', sort: sortFiles },
   'engines',
   'activationEvents',
   'contributes',
