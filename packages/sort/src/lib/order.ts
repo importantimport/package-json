@@ -37,7 +37,7 @@ export const order = [
   'contributes',
   'scripts',
   { key: 'peerDependencies', sort: sortDependencies },
-  'peerDependenciesMeta',
+  { key: 'peerDependenciesMeta', sort: sortDependencies },
   { key: 'dependencies', sort: sortDependencies },
   { key: 'optionalDependencies', sort: sortDependencies },
   { key: 'devDependencies', sort: sortDependencies },
