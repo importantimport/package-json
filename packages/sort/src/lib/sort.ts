@@ -1,4 +1,4 @@
-import { order } from './order'
+import { order, orderKeys } from './order'
 
 /**
  * Sort `package.json`.
@@ -9,7 +9,6 @@ export const sort = (packageJson: Record<string, unknown>) =>
   Object.fromEntries(
     Object.entries(packageJson)
       .filter(([_, value]) => !!value)
-      .sort(([keyA], [keyB]) =>
-        order.indexOf(keyA) - order.indexOf(keyB),
-      ),
+      .sort(([keyA], [keyB]) => orderKeys.indexOf(keyA) - orderKeys.indexOf(keyB))
+      .map(([k, v]) => [k, order.find(({ key }) => key === k)?.sort(v)]),
   )

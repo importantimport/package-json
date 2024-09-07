@@ -1,3 +1,5 @@
+import { sortDependencies } from './sort-dependencies'
+
 /** @see {@link https://github.com/antfu/eslint-config/blob/d2f6c0bd7887764f9778cba3722110dbb0e0027e/src/configs/sort.ts#L25-L68} */
 export const order = [
   '$schema',
@@ -22,8 +24,8 @@ export const order = [
   'exports',
   'main',
   'module',
-  'unpkg',
-  'jsdelivr',
+  // 'unpkg', // not recommended
+  // 'jsdelivr', // not recommended
   'types',
   'typesVersions',
   'bin',
@@ -33,16 +35,18 @@ export const order = [
   'activationEvents',
   'contributes',
   'scripts',
-  'peerDependencies',
+  { key: 'peerDependencies', sort: sortDependencies },
   'peerDependenciesMeta',
-  'dependencies',
-  'optionalDependencies',
-  'devDependencies',
+  { key: 'dependencies', sort: sortDependencies },
+  { key: 'optionalDependencies', sort: sortDependencies },
+  { key: 'devDependencies', sort: sortDependencies },
   'pnpm',
   'overrides',
   'resolutions',
   'husky',
   'simple-git-hooks',
   'lint-staged',
-  'eslintConfig',
-]
+  // 'eslintConfig', // not recommended
+].map(key => typeof key === 'string' ? { key, sort: (v: unknown) => v } : key)
+
+export const orderKeys = order.map(({ key }) => key)
