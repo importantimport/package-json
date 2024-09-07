@@ -22,7 +22,7 @@ export const order = [
   'keywords',
   'categories',
   'sideEffects',
-  'exports',
+  'exports', // TODO: sortExports
   'main',
   'module',
   // 'unpkg', // not recommended
@@ -41,11 +41,11 @@ export const order = [
   { key: 'dependencies', sort: sortDependencies },
   { key: 'optionalDependencies', sort: sortDependencies },
   { key: 'devDependencies', sort: sortDependencies },
-  'pnpm',
-  'overrides',
-  'resolutions',
-  'husky',
-  'simple-git-hooks',
+  'pnpm', // TODO: sortOverrides
+  'overrides', // TODO: sortOverrides
+  'resolutions', // TODO: sortOverrides
+  'husky', // TODO: sortGitHooks
+  'simple-git-hooks', // TODO: sortGitHooks
   'lint-staged',
   // 'eslintConfig', // not recommended
 ].map(key => typeof key === 'string' ? { key, sort: (v: unknown) => v } : key)
