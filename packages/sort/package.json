@@ -1,6 +1,16 @@
 {
   "name": "@package-json/sort",
   "type": "module",
+  "version": "0.0.1",
+  "author": "藍+85CD",
+  "license": "MIT",
+  "homepage": "https://github.com/importantimport/package-json",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/importantimport/package-json.git",
+    "directory": "packages/sort"
+  },
+  "bugs": "https://github.com/importantimport/package-json/issues",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
