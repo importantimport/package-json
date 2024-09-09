@@ -26,6 +26,7 @@ export const { config } = await loadConfig<PackageJson>({
         exports: undefined,
         main: undefined,
         module: undefined,
+        packageManager: undefined,
         peerDependencies: undefined,
         private: undefined,
         scripts: undefined,
