@@ -1,5 +1,4 @@
-// eslint-disable-next-line ts/consistent-type-definitions
-type PackageJsonMain = {
+interface PackageJsonMain {
   name?: string
   private?: boolean
   /** @default 'undefined' */
@@ -7,18 +6,16 @@ type PackageJsonMain = {
   version?: string
 }
 
-// eslint-disable-next-line ts/consistent-type-definitions
-export type PackageJsonExport = {
-  types?: string
-  // eslint-disable-next-line perfectionist/sort-object-types
+export interface PackageJsonExport {
+
+  default?: string
+
   import?: string
   require?: string
-  // eslint-disable-next-line perfectionist/sort-object-types
-  default?: string
+  types?: string
 }
 
-// eslint-disable-next-line ts/consistent-type-definitions
-export type PackageJsonExports = {
+export interface PackageJsonExports {
   exports?: Record<string, PackageJsonExport | Record<string, PackageJsonExport> | string>
   /**
    * @default
@@ -45,4 +42,14 @@ export type PackageJsonExports = {
   types?: string
 }
 
-export type PackageJson = PackageJsonExports & PackageJsonMain & Record<string, unknown>
+export interface PackageJsonRepository {
+  bugs?: string
+  homepage?: string
+  repository?: {
+    directory?: string
+    type?: string
+    url?: string
+  } | string
+}
+
+export type PackageJson = PackageJsonExports & PackageJsonMain & PackageJsonRepository & Record<string, unknown>

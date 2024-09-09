@@ -6,6 +6,7 @@ import type { PackageJson } from './types'
 
 import { config } from './config'
 import { createExports } from './create-exports'
+import { createRepository } from './create-repository'
 import { getScope } from './utils'
 
 /**
@@ -17,6 +18,7 @@ export const create = (json: PackageJson = {}) =>
   sort({
     ...config,
     ...createExports(config),
+    ...createRepository(config),
     name: getScope(config.name) + basename(cwd()),
     private: config.private,
     type: config.type,

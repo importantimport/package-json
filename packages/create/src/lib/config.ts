@@ -2,7 +2,7 @@ import { loadConfig } from 'unconfig'
 
 import type { PackageJson } from './types'
 
-export const { config } = await loadConfig<PackageJson>({
+export const { config, sources } = await loadConfig<PackageJson>({
   sources: [
     {
       extensions: ['ts', 'mts', 'js', 'mjs'],
