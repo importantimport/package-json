@@ -20,7 +20,9 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "bin": "./dist/bin.js",
+  "bin": {
+    "package-json-create": "./dist/bin.js"
+  },
   "files": [
     "dist"
   ],
