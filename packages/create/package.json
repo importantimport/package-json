@@ -2,6 +2,7 @@
   "name": "@package-json/create",
   "type": "module",
   "version": "0.0.2",
+  "description": "Zero-config package.json creator.",
   "author": "藍+85CD",
   "license": "MIT",
   "homepage": "https://github.com/importantimport/package-json",

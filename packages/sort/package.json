@@ -2,6 +2,7 @@
   "name": "@package-json/sort",
   "type": "module",
   "version": "0.0.2",
+  "description": "Opinionated package.json sorter.",
   "author": "藍+85CD",
   "license": "MIT",
   "homepage": "https://github.com/importantimport/package-json",
