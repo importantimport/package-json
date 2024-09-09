@@ -14,6 +14,7 @@
   "bugs": "https://github.com/importantimport/package-json/issues",
   "scripts": {
     "automd": "automd && corepack pnpm -r exec automd",
+    "bump": "bumpp --all --no-push",
     "lint": "eslint --flag unstable_ts_config .",
     "lint:fix": "eslint --flag unstable_ts_config --fix .",
     "release": "bumpp --all --commit \"chore: release v%s\" --tag \"%s\""
