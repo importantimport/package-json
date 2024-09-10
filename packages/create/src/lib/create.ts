@@ -1,4 +1,4 @@
-import type { JSONSchemaForNPMPackageJsonFiles as PackageJson } from '@package-json/types'
+import type { PackageJson } from '@package-json/types'
 
 import { sort } from '@package-json/sort'
 import { basename } from 'node:path'

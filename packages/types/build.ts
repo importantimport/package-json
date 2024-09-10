@@ -20,5 +20,8 @@ const types = await compile({
   ),
 }, 'PackageJson')
 
-await writeFile('dist/index.d.ts', types)
+await writeFile('dist/index.d.ts', `
+${types}
+export { JSONSchemaForNPMPackageJsonFiles as PackageJson, JSONSchemaForNPMPackageJsonFiles as default }
+`)
 await writeFile('dist/index.js', 'export default {}')

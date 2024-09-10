@@ -1,4 +1,4 @@
-import type { JSONSchemaForNPMPackageJsonFiles as PackageJson } from '@package-json/types'
+import type { PackageJson } from '@package-json/types'
 
 const moduleExports = {
   types: './dist/index.d.mts',

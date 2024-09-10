@@ -1,4 +1,4 @@
-import type { JSONSchemaForNPMPackageJsonFiles as PackageJson } from '@package-json/types'
+import type { PackageJson } from '@package-json/types'
 
 export const createRepository = ({ bugs, homepage, repository }: PackageJson): PackageJson => ({
   bugs, // TODO: fallback `${repository.url}/issues`
