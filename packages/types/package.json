@@ -1,15 +1,14 @@
 {
-  "name": "@package-json/create",
+  "name": "@package-json/types",
   "type": "module",
   "version": "0.0.3",
-  "description": "Zero-config package.json creator.",
   "author": "藍+85CD",
   "license": "MIT",
   "homepage": "https://github.com/importantimport/package-json",
   "repository": {
     "type": "git",
     "url": "https://github.com/importantimport/package-json.git",
-    "directory": "packages/create"
+    "directory": "packages/types"
   },
   "bugs": "https://github.com/importantimport/package-json/issues",
   "exports": {
@@ -21,20 +20,10 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "bin": {
-    "package-json-create": "./dist/bin.js"
-  },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "pkgroll",
-    "test": "vitest run",
-    "test:watch": "vitest watch"
-  },
-  "dependencies": {
-    "@package-json/sort": "workspace:^",
-    "@package-json/types": "workspace:^",
-    "unconfig": "^0.5.5"
+    "build": "tsx build.ts"
   }
 }

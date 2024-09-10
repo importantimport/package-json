@@ -35,9 +35,15 @@ importers:
       jiti:
         specifier: ^1.21.6
         version: 1.21.6
+      json-schema-to-typescript:
+        specifier: ^15.0.2
+        version: 15.0.2
       pkgroll:
         specifier: ^2.4.2
         version: 2.4.2(typescript@5.5.4)
+      tsx:
+        specifier: ^4.19.0
+        version: 4.19.0
       vitest:
         specifier: ^2.0.5
         version: 2.0.5(@types/node@22.5.4)
@@ -47,11 +53,16 @@ importers:
       '@package-json/sort':
         specifier: workspace:^
         version: link:../sort
+      '@package-json/types':
+        specifier: workspace:^
+        version: link:../types
       unconfig:
         specifier: ^0.5.5
         version: 0.5.5
 
   packages/sort: {}
+
+  packages/types: {}
 
 packages:
 
@@ -110,6 +121,10 @@ packages:
 
   '@antfu/utils@0.7.10':
     resolution: {integrity: sha512-+562v9k4aI80m1+VuMHehNJWLOFjBnXn3tdOitzD0il5b7smkSBal4+a3oKiQTbrwMmN/TBUMDvbdoWDehgOww==}
+
+  '@apidevtools/json-schema-ref-parser@11.7.0':
+    resolution: {integrity: sha512-pRrmXMCwnmrkS3MLgAIW5dXRzeTv6GLjkjb4HmxNnvAKXN1Nfzp4KmGADBQvlVUcqi+a5D+hfGDLLnd5NnYxog==}
+    engines: {node: '>= 16'}
 
   '@babel/code-frame@7.24.7':
     resolution: {integrity: sha512-BcYH1CVJBO9tvyIZ2jVeXgSIMvGZ2FDRvDdOIVQyuklNKSsx+eppDEBq/g47Ayw+RqNFE+URvOShmf+f/qwAlA==}
@@ -571,6 +586,9 @@ packages:
     resolution: {integrity: sha512-f5DRIOZf7wxogefH03RjMPMdBF7ADTWUMoOs9kaJo06EfwF+aFhMZMDZxHg/Xe12hptN9xoZjGso2fdjapBRIA==}
     engines: {node: '>=10'}
 
+  '@jsdevtools/ono@7.1.3':
+    resolution: {integrity: sha512-4JQNk+3mVzK3xh2rqd6RB4J46qUR19azEHBneZyTZM+c456qOrbbM/5xcR8huNCCcbVt7+UmizG6GuUvPvKUYg==}
+
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -831,6 +849,9 @@ packages:
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
+
+  '@types/lodash@4.17.7':
+    resolution: {integrity: sha512-8wTvZawATi/lsmNu10/j2hk1KEP0IvjubqPE3cu1Xz7xfXXt5oCq3SNUz4fMIP4XGF9Ky+Ue2tBA3hcS7LSBlA==}
 
   '@types/mdast@3.0.15':
     resolution: {integrity: sha512-LnwD+mUEfxWMa1QpDraczIn6k0Ee3SMicuYSSzS6ZYl2gKS09EClnJYGd8Du6rfc5r/GZEk5o1mRb8TaTj03sQ==}
@@ -1788,6 +1809,11 @@ packages:
   json-parse-even-better-errors@2.3.1:
     resolution: {integrity: sha512-xyFwyhro/JEof6Ghe2iz2NcXoj2sloNsWr/XsERDK/oiPCfaNhl5ONfp+jQdAZRQQ0IJWNzH9zIZF7li91kh2w==}
 
+  json-schema-to-typescript@15.0.2:
+    resolution: {integrity: sha512-+cRBw+bBJ3k783mZroDIgz1pLNPB4hvj6nnbHTWwEVl0dkW8qdZ+M9jWhBb+Y0FAdHvNsXACga3lewGO8lktrw==}
+    engines: {node: '>=16.0.0'}
+    hasBin: true
+
   json-schema-traverse@0.4.1:
     resolution: {integrity: sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg==}
 
@@ -1901,6 +1927,9 @@ packages:
   minimatch@9.0.5:
     resolution: {integrity: sha512-G6T0ZX48xgozx7587koeX9Ys2NYy6Gmv//P89sEte9V9whIapMNF4idKxnW2QtCcLiTWlb/wfCabAtAFWhhBow==}
     engines: {node: '>=16 || 14 >=14.17'}
+
+  minimist@1.2.8:
+    resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
 
   minipass@3.3.6:
     resolution: {integrity: sha512-DxiNidxSEK+tHG6zOIklvNOwm3hvCrbUrdtzY74U6HKTJxvIDfOUL5W5P2Ghd3DTkhhKPYGqeNUIh5qcM4YBfw==}
@@ -2113,6 +2142,11 @@ packages:
   prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+
+  prettier@3.3.3:
+    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
+    engines: {node: '>=14'}
+    hasBin: true
 
   prompts@2.4.2:
     resolution: {integrity: sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==}
@@ -2619,6 +2653,12 @@ snapshots:
 
   '@antfu/utils@0.7.10': {}
 
+  '@apidevtools/json-schema-ref-parser@11.7.0':
+    dependencies:
+      '@jsdevtools/ono': 7.1.3
+      '@types/json-schema': 7.0.15
+      js-yaml: 4.1.0
+
   '@babel/code-frame@7.24.7':
     dependencies:
       '@babel/highlight': 7.24.7
@@ -2999,6 +3039,8 @@ snapshots:
       string-argv: 0.3.2
       type-detect: 4.1.0
 
+  '@jsdevtools/ono@7.1.3': {}
+
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -3205,6 +3247,8 @@ snapshots:
   '@types/estree@1.0.5': {}
 
   '@types/json-schema@7.0.15': {}
+
+  '@types/lodash@4.17.7': {}
 
   '@types/mdast@3.0.15':
     dependencies:
@@ -4330,6 +4374,18 @@ snapshots:
 
   json-parse-even-better-errors@2.3.1: {}
 
+  json-schema-to-typescript@15.0.2:
+    dependencies:
+      '@apidevtools/json-schema-ref-parser': 11.7.0
+      '@types/json-schema': 7.0.15
+      '@types/lodash': 4.17.7
+      glob: 10.4.5
+      is-glob: 4.0.3
+      js-yaml: 4.1.0
+      lodash: 4.17.21
+      minimist: 1.2.8
+      prettier: 3.3.3
+
   json-schema-traverse@0.4.1: {}
 
   json-stable-stringify-without-jsonify@1.0.1: {}
@@ -4442,6 +4498,8 @@ snapshots:
   minimatch@9.0.5:
     dependencies:
       brace-expansion: 2.0.1
+
+  minimist@1.2.8: {}
 
   minipass@3.3.6:
     dependencies:
@@ -4649,6 +4707,8 @@ snapshots:
       source-map-js: 1.2.0
 
   prelude-ls@1.2.1: {}
+
+  prettier@3.3.3: {}
 
   prompts@2.4.2:
     dependencies:

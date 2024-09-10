@@ -1,18 +1,18 @@
-import type { PackageJson, PackageJsonExport, PackageJsonExports } from './types'
+import type { JSONSchemaForNPMPackageJsonFiles as PackageJson } from '@package-json/types'
 
-const moduleExports: PackageJsonExport = {
+const moduleExports = {
   types: './dist/index.d.mts',
   // eslint-disable-next-line perfectionist/sort-objects
   default: './dist/index.mjs',
 }
 
-const commonjsExports: PackageJsonExport = {
+const commonjsExports = {
   types: './dist/index.d.cts',
   // eslint-disable-next-line perfectionist/sort-objects
   default: './dist/index.cjs',
 }
 
-export const createExports = ({ exports, files, main, module, type, types }: PackageJson): PackageJsonExports => ({
+export const createExports = ({ exports, files, main, module, type, types }: PackageJson): PackageJson => ({
   exports: exports ?? {
     '.': type === 'module'
       ? moduleExports

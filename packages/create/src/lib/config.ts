@@ -1,6 +1,6 @@
-import { loadConfig } from 'unconfig'
+import type { JSONSchemaForNPMPackageJsonFiles as PackageJson } from '@package-json/types'
 
-import type { PackageJson } from './types'
+import { loadConfig } from 'unconfig'
 
 export const { config, sources } = await loadConfig<PackageJson>({
   sources: [

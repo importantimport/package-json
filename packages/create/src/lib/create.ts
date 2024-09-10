@@ -1,8 +1,8 @@
+import type { JSONSchemaForNPMPackageJsonFiles as PackageJson } from '@package-json/types'
+
 import { sort } from '@package-json/sort'
 import { basename } from 'node:path'
 import { cwd } from 'node:process'
-
-import type { PackageJson } from './types'
 
 import { config } from './config'
 import { createExports } from './create-exports'
