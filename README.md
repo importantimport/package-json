@@ -16,6 +16,14 @@ Opinionated `package.json` sorter.
 npx @package-json/sort
 ```
 
+## [types](packages/types/)
+
+Auto-generated `package.json` types.
+
+```ts
+import type { PackageJson } from '@package-json/types'
+```
+
 ## License
 
 [MIT](LICENSE.md)
@@ -24,6 +32,6 @@ npx @package-json/sort
 
 ---
 
-_🤖 auto updated with [automd](https://automd.unjs.io) (last updated: Fri Sep 06 2024)_
+_🤖 auto updated with [automd](https://automd.unjs.io) (last updated: Tue Sep 10 2024)_
 
 <!-- /automd -->

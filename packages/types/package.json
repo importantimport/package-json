@@ -2,6 +2,7 @@
   "name": "@package-json/types",
   "type": "module",
   "version": "0.0.3",
+  "description": "Auto-generated package.json types.",
   "author": "藍+85CD",
   "license": "MIT",
   "homepage": "https://github.com/importantimport/package-json",

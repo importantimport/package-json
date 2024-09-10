@@ -4,6 +4,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@package-json/create?color=green)](https://npmjs.com/package/@package-json/create)
 [![npm downloads](https://img.shields.io/npm/dm/@package-json/create?color=green)](https://npmjs.com/package/@package-json/create)
+[![license](https://img.shields.io/github/license/importantimport/package-json?color=green)](https://github.com/importantimport/package-json/blob/main/LICENSE)
 
 <!-- /automd -->
 
