@@ -12,7 +12,7 @@ const commonjsExports: PackageJsonExport = {
   default: './dist/index.cjs',
 }
 
-export const createExports = ({ exports, files, main, module, type }: PackageJson): PackageJsonExports => ({
+export const createExports = ({ exports, files, main, module, type, types }: PackageJson): PackageJsonExports => ({
   exports: exports ?? {
     '.': type === 'module'
       ? moduleExports
@@ -27,4 +27,5 @@ export const createExports = ({ exports, files, main, module, type }: PackageJso
   files: files ?? ['dist'],
   main: main ?? type === 'module' ? './dist/index.mjs' : './dist/index.cjs',
   module: module ?? type === undefined ? './dist/index.mjs' : undefined,
+  types: types ?? './dist/index.d.ts',
 })
