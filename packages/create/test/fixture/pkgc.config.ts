@@ -1,3 +1,4 @@
+// pkgc.config.ts / package-json-create.config.ts
 import { defineConfig } from '@package-json/create'
 
 export default defineConfig({

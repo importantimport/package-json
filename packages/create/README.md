@@ -45,6 +45,7 @@ export default json
 <!-- automd:file src="./test/fixture/pkgc.config.ts" code -->
 
 ```ts [pkgc.config.ts]
+// pkgc.config.ts / package-json-create.config.ts
 import { defineConfig } from '@package-json/create'
 
 export default defineConfig({
