@@ -29,6 +29,7 @@ describe('create', () => {
         url: 'https://github.com/importantimport/package-json.git',
       },
       type: 'module',
+      types: './dist/index.d.ts',
       version,
     }))
   })
