@@ -40,6 +40,28 @@ export default json
 
 <!-- /automd -->
 
+###### config
+
+<!-- automd:file src="./test/fixture/pkgc.config.ts" code -->
+
+```ts [pkgc.config.ts]
+import { defineConfig } from '@package-json/create'
+
+export default defineConfig({
+  name: '@package-json/foo', // scope: @package-json
+  scripts: {
+    'build': 'pkgroll',
+    'build:watch': 'pkgroll --watch',
+    'test': 'vitest run',
+    'test:watch': 'vitest watch',
+  },
+  type: 'module',
+})
+
+```
+
+<!-- /automd -->
+
 ## License
 
 [MIT](../../LICENSE.md)
