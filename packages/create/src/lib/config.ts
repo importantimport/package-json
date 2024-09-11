@@ -7,12 +7,10 @@ export const { config, sources } = await loadConfig<PackageJson>({
     {
       extensions: ['ts', 'mts', 'js', 'mjs'],
       files: 'pkgc.config',
-      parser: 'import',
     },
     {
       extensions: ['ts', 'mts', 'js', 'mjs'],
       files: 'package-json-create.config',
-      parser: 'import',
     },
     {
       extensions: [],

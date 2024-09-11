@@ -35,6 +35,6 @@
   "dependencies": {
     "@package-json/sort": "workspace:^",
     "@package-json/types": "workspace:^",
-    "unconfig": "^0.5.5"
+    "unconfig": "0.3.13"
   }
 }
