@@ -1,7 +1,7 @@
 {
   "name": "@package-json/create",
   "type": "module",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Zero-config package.json creator.",
   "author": "藍+85CD",
   "license": "MIT",

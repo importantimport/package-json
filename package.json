@@ -1,7 +1,7 @@
 {
   "name": "@package-json/workspace",
   "type": "module",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "private": true,
   "packageManager": "pnpm@9.9.0",
   "author": "藍+85CD",
