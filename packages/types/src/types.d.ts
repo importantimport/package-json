@@ -73,14 +73,6 @@ export type JSONSchemaForNPMPackageJsonFiles = {
         | "MS-PL"
         | "UNLICENSED"
       );
-  /**
-   * DEPRECATED: Instead, use SPDX expressions, like this: { "license": "ISC" } or { "license": "(MIT OR Apache-2.0)" } see: 'https://docs.npmjs.com/files/package.json#license'.
-   */
-  licenses?: {
-    type?: License;
-    url?: string;
-    [k: string]: unknown;
-  }[];
   author?: Person;
   /**
    * A list of people who contributed to this package.
@@ -98,26 +90,6 @@ export type JSONSchemaForNPMPackageJsonFiles = {
    * The main field is a module ID that is the primary entry point to your program.
    */
   main?: string;
-  /**
-   * The "exports" field is used to restrict external access to non-exported module files, also enables a module to import itself using "name".
-   */
-  exports?:
-    | (string | null)
-    | {
-        /**
-         * The module path that is resolved when the module specifier matches "name", shadows the "main" field.
-         */
-        "."?: PackageExportsEntry | PackageExportsFallback;
-        /**
-         * The module path prefix that is resolved when the module specifier starts with "name/", set to "./*" to allow external modules to import any subpath.
-         *
-         * This interface was referenced by `undefined`'s JSON-Schema definition
-         * via the `patternProperty` "^\./.+".
-         */
-        [k: string]: PackageExportsEntry | PackageExportsFallback;
-      }
-    | PackageExportsEntryObject1
-    | PackageExportsFallback1;
   bin?:
     | string
     | {
@@ -285,10 +257,6 @@ export type JSONSchemaForNPMPackageJsonFiles = {
    */
   bundleDependencies?: string[] | boolean;
   /**
-   * DEPRECATED: This field is honored, but "bundleDependencies" is the correct field name.
-   */
-  bundledDependencies?: string[] | boolean;
-  /**
    * Resolutions is used to support selective version resolutions using yarn, which lets you define custom package versions or ranges inside your dependencies. For npm, use overrides instead. See: https://classic.yarnpkg.com/en/docs/selective-version-resolutions
    */
   resolutions?: {
@@ -331,10 +299,6 @@ export type JSONSchemaForNPMPackageJsonFiles = {
    * Specify that your code only runs on certain cpu architectures.
    */
   cpu?: string[];
-  /**
-   * DEPRECATED: This option used to trigger an npm warning, but it will no longer warn. It is purely there for informational purposes. It is now recommended that you install any binaries as local devDependencies wherever possible.
-   */
-  preferGlobal?: boolean;
   /**
    * If set to true, then npm will refuse to publish it.
    */
@@ -389,32 +353,6 @@ export type JSONSchemaForNPMPackageJsonFiles = {
    */
   [k: string]: any;
 };
-export type License =
-  | string
-  | (
-      | "AGPL-3.0-only"
-      | "Apache-2.0"
-      | "BSD-2-Clause"
-      | "BSD-3-Clause"
-      | "BSL-1.0"
-      | "CC0-1.0"
-      | "CDDL-1.0"
-      | "CDDL-1.1"
-      | "EPL-1.0"
-      | "EPL-2.0"
-      | "GPL-2.0-only"
-      | "GPL-3.0-only"
-      | "ISC"
-      | "LGPL-2.0-only"
-      | "LGPL-2.1-only"
-      | "LGPL-2.1-or-later"
-      | "LGPL-3.0-only"
-      | "LGPL-3.0-or-later"
-      | "MIT"
-      | "MPL-2.0"
-      | "MS-PL"
-      | "UNLICENSED"
-    );
 /**
  * A person who has been involved in creating or maintaining this package.
  */
@@ -432,19 +370,6 @@ export type Person1 =
       [k: string]: unknown;
     }
   | string;
-export type PackageExportsEntry = PackageExportsEntryPath | PackageExportsEntryObject;
-/**
- * The module path that is resolved when this specifier is imported. Set to `null` to disallow importing this module.
- */
-export type PackageExportsEntryPath = string | null;
-/**
- * Used to allow fallbacks in case this environment doesn't support the preceding entries.
- */
-export type PackageExportsFallback = PackageExportsEntry[];
-/**
- * Used to allow fallbacks in case this environment doesn't support the preceding entries.
- */
-export type PackageExportsFallback1 = PackageExportsEntry[];
 /**
  * URL to a website with details about how to fund the package.
  */
@@ -482,76 +407,6 @@ export type ScriptsStart = string;
  */
 export type ScriptsRestart = string;
 
-/**
- * Used to specify conditional exports, note that Conditional exports are unsupported in older environments, so it's recommended to use the fallback array option if support for those environments is a concern.
- */
-export interface PackageExportsEntryObject {
-  /**
-   * The module path that is resolved when this specifier is imported as a CommonJS module using the `require(...)` function.
-   */
-  require?: PackageExportsEntry | PackageExportsFallback;
-  /**
-   * The module path that is resolved when this specifier is imported as an ECMAScript module using an `import` declaration or the dynamic `import(...)` function.
-   */
-  import?: PackageExportsEntry | PackageExportsFallback;
-  /**
-   * The module path that is resolved when this environment is Node.js.
-   */
-  node?: PackageExportsEntry | PackageExportsFallback;
-  /**
-   * The module path that is resolved when no other export type matches.
-   */
-  default?: PackageExportsEntry | PackageExportsFallback;
-  /**
-   * The module path that is resolved for TypeScript types when this specifier is imported. Should be listed before other conditions.
-   */
-  types?: PackageExportsEntry | PackageExportsFallback;
-  /**
-   * The module path that is resolved when this environment matches the property name.
-   *
-   * This interface was referenced by `PackageExportsEntryObject`'s JSON-Schema definition
-   * via the `patternProperty` "^(?![\.0-9]).".
-   *
-   * This interface was referenced by `PackageExportsEntryObject1`'s JSON-Schema definition
-   * via the `patternProperty` "^(?![\.0-9]).".
-   */
-  [k: string]: PackageExportsEntry | PackageExportsFallback;
-}
-/**
- * Used to specify conditional exports, note that Conditional exports are unsupported in older environments, so it's recommended to use the fallback array option if support for those environments is a concern.
- */
-export interface PackageExportsEntryObject1 {
-  /**
-   * The module path that is resolved when this specifier is imported as a CommonJS module using the `require(...)` function.
-   */
-  require?: PackageExportsEntry | PackageExportsFallback;
-  /**
-   * The module path that is resolved when this specifier is imported as an ECMAScript module using an `import` declaration or the dynamic `import(...)` function.
-   */
-  import?: PackageExportsEntry | PackageExportsFallback;
-  /**
-   * The module path that is resolved when this environment is Node.js.
-   */
-  node?: PackageExportsEntry | PackageExportsFallback;
-  /**
-   * The module path that is resolved when no other export type matches.
-   */
-  default?: PackageExportsEntry | PackageExportsFallback;
-  /**
-   * The module path that is resolved for TypeScript types when this specifier is imported. Should be listed before other conditions.
-   */
-  types?: PackageExportsEntry | PackageExportsFallback;
-  /**
-   * The module path that is resolved when this environment matches the property name.
-   *
-   * This interface was referenced by `PackageExportsEntryObject`'s JSON-Schema definition
-   * via the `patternProperty` "^(?![\.0-9]).".
-   *
-   * This interface was referenced by `PackageExportsEntryObject1`'s JSON-Schema definition
-   * via the `patternProperty` "^(?![\.0-9]).".
-   */
-  [k: string]: PackageExportsEntry | PackageExportsFallback;
-}
 /**
  * Used to inform about ways to help fund development of the package.
  */

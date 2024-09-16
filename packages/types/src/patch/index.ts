@@ -1,6 +1,6 @@
 import type { JSONSchemaForNPMPackageJsonFiles } from '../types'
-import type { PatchedExports } from './exports'
+import type { Exports } from './exports'
 
 export type PackageJson = {
-  exports?: PatchedExports
-} & Omit<JSONSchemaForNPMPackageJsonFiles, 'exports'>
+  exports?: Exports
+} & JSONSchemaForNPMPackageJsonFiles
