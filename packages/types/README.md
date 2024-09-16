@@ -12,8 +12,18 @@ Auto-generated `package.json` types.
 
 ## Usage
 
+###### types
+
 ```ts
 import type { PackageJson } from '@package-json/types'
+```
+
+###### define
+
+```ts
+import { definePackageJson } from '@package-json/types'
+
+export default definePackageJson({})
 ```
 
 ## License
