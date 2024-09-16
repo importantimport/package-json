@@ -11,16 +11,33 @@ await mkdir('dist')
 const schema = await fetch('https://json.schemastore.org/package.json')
   .then(res => res.json())
 
-const deprecated = ['bundledDependencies', 'licenses', 'preferGlobal']
-const external = ['ava', 'eslintConfig', 'jscpd', 'jspm', 'prettier', 'release', 'stylelint']
+const patchedDefinitions = [
+  'packageExportsEntry',
+  'packageExportsEntryPath',
+  'packageExportsEntryObject',
+  'packageExportsEntryOrFallback',
+  'packageExportsFallback',
+]
+
+const deprecatedProperties = ['bundledDependencies', 'licenses', 'preferGlobal']
+const externalProperties = ['ava', 'eslintConfig', 'jscpd', 'jspm', 'prettier', 'release', 'stylelint']
+const patchedProperties = ['exports']
 
 const types = await compile({
   ...schema,
+  definitions: Object.fromEntries(
+    Object.entries(schema.definitions).filter(
+      ([key]) => ![
+        ...patchedDefinitions,
+      ].includes(key),
+    ),
+  ),
   properties: Object.fromEntries(
     Object.entries(schema.properties).filter(
       ([key]) => ![
-        ...deprecated,
-        ...external,
+        ...deprecatedProperties,
+        ...externalProperties,
+        ...patchedProperties,
       ].includes(key),
     ),
   ),
