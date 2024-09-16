@@ -1,4 +1,4 @@
-import type { PackageExportsEntry, PackageExportsEntryObject1, PackageExportsFallback, PackageExportsFallback1 } from '../types'
+import type { PackageExportsEntry, PackageExportsEntryObject1, PackageExportsFallback } from '../types'
 
 /**
  * The module path prefix that is resolved when the module specifier starts with "name/", set to "./*" to allow external modules to import any subpath.
@@ -19,6 +19,5 @@ export type PatchedExports =
     '.'?: PackageExportsEntry | PackageExportsFallback
     './package.json'?: './package.json'
   } & PatchedPackageExportsEntry
-  | (null | string)
+  | null
   | PackageExportsEntryObject1
-  | PackageExportsFallback1
