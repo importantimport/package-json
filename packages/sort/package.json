@@ -1,7 +1,7 @@
 {
   "name": "@package-json/sort",
   "type": "module",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Opinionated package.json sorter.",
   "author": "藍+85CD",
   "license": "MIT",
