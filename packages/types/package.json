@@ -25,6 +25,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsx build.ts"
+    "build": "pkgroll",
+    "build:upstream": "tsx build.ts"
   }
 }
