@@ -27,5 +27,8 @@
   "scripts": {
     "build": "pkgroll",
     "build:upstream": "tsx build.ts"
+  },
+  "devDependencies": {
+    "ts-xor": "^1.3.0"
   }
 }
