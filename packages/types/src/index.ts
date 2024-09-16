@@ -3,8 +3,8 @@ export {
   definePackageJson as default,
   definePackageJson as definePackageJSON,
 } from './define'
-export type * from './types'
 export type {
-  JSONSchemaForNPMPackageJsonFiles as PackageJson,
-  JSONSchemaForNPMPackageJsonFiles as PackageJSON,
-} from './types'
+  PackageJson,
+  PackageJson as PackageJSON,
+} from './patch'
+export type * from './types'
