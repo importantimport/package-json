@@ -1,7 +1,7 @@
 {
   "name": "@package-json/types",
   "type": "module",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Auto-generated package.json types.",
   "author": "藍+85CD",
   "license": "MIT",
