@@ -1,6 +1,6 @@
 export {
-  definePackageJson,
   definePackageJson as default,
+  definePackageJson,
   definePackageJson as definePackageJSON,
 } from './define'
 export type {

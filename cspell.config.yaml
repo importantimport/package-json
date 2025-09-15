@@ -5,8 +5,10 @@ dictionaries: []
 words:
   - automd
   - bumpp
+  - masknet
   - moeru
   - pkgroll
+  - sonarjs
   - unconfig
 ignoreWords: []
 import: []

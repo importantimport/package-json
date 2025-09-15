@@ -1,3 +1,6 @@
+/* eslint-disable antfu/no-top-level-await */
+/* eslint-disable @masknet/no-top-level */
+
 import { writeFile } from 'node:fs/promises'
 
 import { create } from './lib/create'

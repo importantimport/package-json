@@ -16,6 +16,7 @@ export const createExports = ({ exports, files, main, module, type, types }: Pac
   exports: exports ?? {
     '.': type === 'module'
       ? moduleExports
+      // eslint-disable-next-line sonarjs/no-nested-conditional
       : type === 'commonjs'
         ? commonjsExports
         : {
@@ -25,7 +26,7 @@ export const createExports = ({ exports, files, main, module, type, types }: Pac
     './package.json': './package.json',
   },
   files: files ?? ['dist'],
-  main: main ?? type === 'module' ? './dist/index.mjs' : './dist/index.cjs',
-  module: module ?? type === undefined ? './dist/index.mjs' : undefined,
+  main: main ?? (type === 'module' ? './dist/index.mjs' : './dist/index.cjs'),
+  module: module ?? (type === undefined ? './dist/index.mjs' : undefined),
   types: types ?? './dist/index.d.ts',
 })

@@ -10,9 +10,9 @@ export const sort = (packageJson: Record<string, unknown> | string): Record<stri
     Object.entries(
       packageJson instanceof Object
         ? packageJson
-        : JSON.parse(packageJson),
+        : JSON.parse(packageJson) as Record<string, unknown>,
     )
-      .filter(([_, value]) => !!value)
+      .filter(([_, value]) => value != null)
       .sort(([keyA], [keyB]) => orderKeys.indexOf(keyA) - orderKeys.indexOf(keyB))
       .map(([k, v]) => [k, order.find(({ key }) => key === k)?.sort(v)]),
   )

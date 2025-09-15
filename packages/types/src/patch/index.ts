@@ -1,6 +1,6 @@
 import type { JSONSchemaForNPMPackageJsonFiles } from '../types'
 import type { Exports } from './exports'
 
-export type PackageJson = {
+export interface PackageJson extends JSONSchemaForNPMPackageJsonFiles {
   exports?: Exports
-} & JSONSchemaForNPMPackageJsonFiles
+}

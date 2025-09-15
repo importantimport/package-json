@@ -9,6 +9,7 @@ export type EvalIfNotUnknown<T, U> = unknown extends T ? never : U
  */
 export type Prettify<T> = {
   [K in keyof T]: T[K]
+// eslint-disable-next-line sonarjs/no-useless-intersection
 } & {}
 
 /**

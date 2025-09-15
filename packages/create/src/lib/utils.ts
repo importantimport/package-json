@@ -10,6 +10,6 @@
  * ```
  */
 export const getScope = (name?: string) =>
-  (name && name.startsWith('@'))
+  (name != null && name.startsWith('@'))
     ? `${name.split('/')[0]}/`
     : undefined

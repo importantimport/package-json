@@ -1,1 +1,1 @@
-export { sort, sort as default } from './lib/sort'
+export { sort as default, sort } from './lib/sort'
