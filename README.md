@@ -22,6 +22,11 @@ Auto-generated `package.json` types.
 
 ```ts
 import type { PackageJson } from '@package-json/types'
+
+const pkg: PackageJson = {
+  name: 'foo',
+  version: '1.0.0',
+}
 ```
 
 ## License
