@@ -13,7 +13,7 @@ export type JSONSchemaForNPMPackageJsonFiles = {
    */
   name?: string;
   /**
-   * Version must be parseable by node-semver, which is bundled with npm as a dependency.
+   * Version must be parsable by node-semver, which is bundled with npm as a dependency.
    */
   version?: string;
   /**
@@ -90,6 +90,18 @@ export type JSONSchemaForNPMPackageJsonFiles = {
    * The main field is a module ID that is the primary entry point to your program.
    */
   main?: string;
+  /**
+   * The "imports" field is used to create private mappings that only apply to import specifiers from within the package itself.
+   */
+  imports?: {
+    /**
+     * The module path that is resolved when this environment matches the property name.
+     *
+     * This interface was referenced by `undefined`'s JSON-Schema definition
+     * via the `patternProperty` "^#.+$".
+     */
+    [k: string]: PackageImportsEntry | PackageImportsFallback;
+  };
   bin?:
     | string
     | {
@@ -174,7 +186,7 @@ export type JSONSchemaForNPMPackageJsonFiles = {
      */
     prepublish?: string;
     /**
-     * Run both BEFORE the package is packed and published, and on local npm install without any arguments. This is run AFTER prepublish, but BEFORE prepublishOnly.
+     * Runs BEFORE the package is packed, i.e. during "npm publish" and "npm pack", and on local "npm install" without any arguments. This is run AFTER "prepublish", but BEFORE "prepublishOnly".
      */
     prepare?: string;
     /**
@@ -237,27 +249,16 @@ export type JSONSchemaForNPMPackageJsonFiles = {
     [k: string]: unknown;
   };
   dependencies?: Dependency;
-  devDependencies?: Dependency;
-  optionalDependencies?: Dependency;
-  peerDependencies?: Dependency;
-  /**
-   * When a user installs your package, warnings are emitted if packages specified in "peerDependencies" are not already installed. The "peerDependenciesMeta" field serves to provide more information on how your peer dependencies are utilized. Most commonly, it allows peer dependencies to be marked as optional. Metadata for this field is specified with a simple hash of the package name to a metadata object.
-   */
-  peerDependenciesMeta?: {
-    [k: string]: {
-      /**
-       * Specifies that this peer dependency is optional and should not be installed automatically.
-       */
-      optional?: boolean;
-      [k: string]: unknown;
-    };
-  };
+  devDependencies?: DevDependency;
+  optionalDependencies?: OptionalDependency;
+  peerDependencies?: PeerDependency;
+  peerDependenciesMeta?: PeerDependencyMeta;
   /**
    * Array of package names that will be bundled when publishing the package.
    */
   bundleDependencies?: string[] | boolean;
   /**
-   * Resolutions is used to support selective version resolutions using yarn, which lets you define custom package versions or ranges inside your dependencies. For npm, use overrides instead. See: https://classic.yarnpkg.com/en/docs/selective-version-resolutions
+   * Resolutions is used to support selective version resolutions using yarn, which lets you define custom package versions or ranges inside your dependencies. For npm, use overrides instead. See: https://yarnpkg.com/configuration/manifest#resolutions
    */
   resolutions?: {
     [k: string]: unknown;
@@ -300,6 +301,32 @@ export type JSONSchemaForNPMPackageJsonFiles = {
    */
   cpu?: string[];
   /**
+   * Define the runtime and package manager for developing the current project.
+   */
+  devEngines?: {
+    /**
+     * Specifies which operating systems are supported for development
+     */
+    os?: DevEngineDependency | DevEngineDependency[];
+    /**
+     * Specifies which CPU architectures are supported for development
+     */
+    cpu?: DevEngineDependency | DevEngineDependency[];
+    /**
+     * Specifies which C standard libraries are supported for development
+     */
+    libc?: DevEngineDependency | DevEngineDependency[];
+    /**
+     * Specifies which JavaScript runtimes (like Node.js, Deno, Bun) are supported for development. Values should use WinterCG Runtime Keys (see https://runtime-keys.proposal.wintercg.org/)
+     */
+    runtime?: DevEngineDependency | DevEngineDependency[];
+    /**
+     * Specifies which package managers are supported for development
+     */
+    packageManager?: DevEngineDependency | DevEngineDependency[];
+    [k: string]: unknown;
+  };
+  /**
    * If set to true, then npm will refuse to publish it.
    */
   private?: boolean | ("false" | "true");
@@ -307,6 +334,7 @@ export type JSONSchemaForNPMPackageJsonFiles = {
     access?: "public" | "restricted";
     tag?: string;
     registry?: string;
+    provenance?: boolean;
     [k: string]: unknown;
   };
   dist?: {
@@ -346,6 +374,151 @@ export type JSONSchemaForNPMPackageJsonFiles = {
         [k: string]: unknown;
       };
   /**
+   * Defines pnpm specific configuration.
+   */
+  pnpm?: {
+    /**
+     * Used to override any dependency in the dependency graph.
+     */
+    overrides?: {
+      [k: string]: unknown;
+    };
+    /**
+     * Used to extend the existing package definitions with additional information.
+     */
+    packageExtensions?: {
+      /**
+       * This interface was referenced by `undefined`'s JSON-Schema definition
+       * via the `patternProperty` "^.+$".
+       */
+      [k: string]: {
+        dependencies?: Dependency;
+        optionalDependencies?: OptionalDependency;
+        peerDependencies?: PeerDependency;
+        peerDependenciesMeta?: PeerDependencyMeta;
+      };
+    };
+    peerDependencyRules?: {
+      /**
+       * pnpm will not print warnings about missing peer dependencies from this list.
+       */
+      ignoreMissing?: string[];
+      /**
+       * Unmet peer dependency warnings will not be printed for peer dependencies of the specified range.
+       */
+      allowedVersions?: {
+        [k: string]: unknown;
+      };
+      /**
+       * Any peer dependency matching the pattern will be resolved from any version, regardless of the range specified in "peerDependencies".
+       */
+      allowAny?: string[];
+    };
+    /**
+     * A list of dependencies to run builds for.
+     */
+    neverBuiltDependencies?: string[];
+    /**
+     * A list of package names that are allowed to be executed during installation.
+     */
+    onlyBuiltDependencies?: string[];
+    /**
+     * Specifies a JSON file that lists the only packages permitted to run installation scripts during the pnpm install process.
+     */
+    onlyBuiltDependenciesFile?: string;
+    /**
+     * A list of package names that should not be built during installation.
+     */
+    ignoredBuiltDependencies?: string[];
+    /**
+     * A list of deprecated versions that the warnings are suppressed.
+     */
+    allowedDeprecatedVersions?: {
+      [k: string]: unknown;
+    };
+    /**
+     * A list of dependencies that are patched.
+     */
+    patchedDependencies?: {
+      [k: string]: unknown;
+    };
+    /**
+     * When true, installation won't fail if some of the patches from the "patchedDependencies" field were not applied.
+     */
+    allowNonAppliedPatches?: boolean;
+    /**
+     * When true, installation won't fail if some of the patches from the "patchedDependencies" field were not applied.
+     */
+    allowUnusedPatches?: boolean;
+    updateConfig?: {
+      /**
+       * A list of packages that should be ignored when running "pnpm outdated" or "pnpm update --latest".
+       */
+      ignoreDependencies?: string[];
+    };
+    /**
+     * Configurational dependencies are installed before all the other types of dependencies (before 'dependencies', 'devDependencies', 'optionalDependencies').
+     */
+    configDependencies?: {
+      [k: string]: unknown;
+    };
+    auditConfig?: {
+      /**
+       * A list of CVE IDs that will be ignored by "pnpm audit".
+       */
+      ignoreCves?: string[];
+      /**
+       * A list of GHSA Codes that will be ignored by "pnpm audit".
+       */
+      ignoreGhsas?: string[];
+    };
+    /**
+     * A list of scripts that must exist in each project.
+     */
+    requiredScripts?: string[];
+    /**
+     * Specifies architectures for which you'd like to install optional dependencies, even if they don't match the architecture of the system running the install.
+     */
+    supportedArchitectures?: {
+      os?: string[];
+      cpu?: string[];
+      libc?: string[];
+    };
+    /**
+     * A list of optional dependencies that the install should be skipped.
+     */
+    ignoredOptionalDependencies?: string[];
+    executionEnv?: {
+      /**
+       * Specifies which exact Node.js version should be used for the project's runtime.
+       */
+      nodeVersion?: string;
+    };
+  };
+  /**
+   * Defines the StackBlitz configuration for the project.
+   */
+  stackblitz?: {
+    /**
+     * StackBlitz automatically installs npm dependencies when opening a project.
+     */
+    installDependencies?: boolean;
+    /**
+     * A terminal command to be executed when opening the project, after installing npm dependencies.
+     */
+    startCommand?: string | boolean;
+    /**
+     * The compileTrigger option controls how file changes in the editor are written to the WebContainers in-memory filesystem.
+     */
+    compileTrigger?: "auto" | "keystroke" | "save";
+    /**
+     * A map of default environment variables that will be set in each top-level shell process.
+     */
+    env?: {
+      [k: string]: unknown;
+    };
+  };
+  /**
    * Any property starting with _ is valid.
    *
    * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -370,6 +543,15 @@ export type Person1 =
       [k: string]: unknown;
     }
   | string;
+export type PackageImportsEntry = PackageImportsEntryPath | PackageImportsEntryObject;
+/**
+ * The module path that is resolved when this specifier is imported. Set to `null` to disallow importing this module.
+ */
+export type PackageImportsEntryPath = string | null;
+/**
+ * Used to allow fallbacks in case this environment doesn't support the preceding entries.
+ */
+export type PackageImportsFallback = PackageImportsEntry[];
 /**
  * URL to a website with details about how to fund the package.
  */
@@ -408,6 +590,31 @@ export type ScriptsStart = string;
 export type ScriptsRestart = string;
 
 /**
+ * Used to specify conditional exports, note that Conditional exports are unsupported in older environments, so it's recommended to use the fallback array option if support for those environments is a concern.
+ */
+export interface PackageImportsEntryObject {
+  /**
+   * The module path that is resolved when this specifier is imported as a CommonJS module using the `require(...)` function.
+   */
+  require?: PackageImportsEntry | PackageImportsFallback;
+  /**
+   * The module path that is resolved when this specifier is imported as an ECMAScript module using an `import` declaration or the dynamic `import(...)` function.
+   */
+  import?: PackageImportsEntry | PackageImportsFallback;
+  /**
+   * The module path that is resolved when this environment is Node.js.
+   */
+  node?: PackageImportsEntry | PackageImportsFallback;
+  /**
+   * The module path that is resolved when no other export type matches.
+   */
+  default?: PackageImportsEntry | PackageImportsFallback;
+  /**
+   * The module path that is resolved for TypeScript types when this specifier is imported. Should be listed before other conditions. Additionally, versioned "types" condition in the form "types@{selector}" are supported.
+   */
+  types?: PackageImportsEntry | PackageImportsFallback;
+}
+/**
  * Used to inform about ways to help fund development of the package.
  */
 export interface FundingWay {
@@ -422,4 +629,52 @@ export interface FundingWay {
  */
 export interface Dependency {
   [k: string]: string;
+}
+/**
+ * Specifies dependencies that are required for the development and testing of the project. These dependencies are not needed in the production environment.
+ */
+export interface DevDependency {
+  [k: string]: string;
+}
+/**
+ * Specifies dependencies that are optional for your project. These dependencies are attempted to be installed during the npm install process, but if they fail to install, the installation process will not fail.
+ */
+export interface OptionalDependency {
+  [k: string]: string;
+}
+/**
+ * Specifies dependencies that are required by the package but are expected to be provided by the consumer of the package.
+ */
+export interface PeerDependency {
+  [k: string]: string;
+}
+/**
+ * When a user installs your package, warnings are emitted if packages specified in "peerDependencies" are not already installed. The "peerDependenciesMeta" field serves to provide more information on how your peer dependencies are utilized. Most commonly, it allows peer dependencies to be marked as optional. Metadata for this field is specified with a simple hash of the package name to a metadata object.
+ */
+export interface PeerDependencyMeta {
+  [k: string]: {
+    /**
+     * Specifies that this peer dependency is optional and should not be installed automatically.
+     */
+    optional?: boolean;
+    [k: string]: unknown;
+  };
+}
+/**
+ * Specifies requirements for development environment components such as operating systems, runtimes, or package managers. Used to ensure consistent development environments across the team.
+ */
+export interface DevEngineDependency {
+  /**
+   * The name of the dependency, with allowed values depending on the parent field
+   */
+  name: string;
+  /**
+   * The version range for the dependency
+   */
+  version?: string;
+  /**
+   * What action to take if validation fails
+   */
+  onFail?: "ignore" | "warn" | "error" | "download";
+  [k: string]: unknown;
 }
