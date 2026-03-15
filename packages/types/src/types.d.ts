@@ -275,7 +275,7 @@ export type JSONSchemaForNPMPackageJsonFiles = {
   packageManager?: string;
   engines?: {
     node?: string;
-    [k: string]: string;
+    [k: string]: string | undefined;
   };
   /**
    * Defines which tools and versions are expected to be used when Volta is installed.
@@ -289,7 +289,7 @@ export type JSONSchemaForNPMPackageJsonFiles = {
      * This interface was referenced by `undefined`'s JSON-Schema definition
      * via the `patternProperty` "(node|npm|pnpm|yarn)".
      */
-    [k: string]: string;
+    [k: string]: string | undefined;
   };
   engineStrict?: boolean;
   /**
@@ -355,7 +355,7 @@ export type JSONSchemaForNPMPackageJsonFiles = {
     | {
         main?: string;
         browser?: string;
-        [k: string]: string;
+        [k: string]: string | undefined;
       };
   /**
    * Allows packages within a directory to depend on one another using direct linking of local files. Additionally, dependencies within a workspace are hoisted to the workspace root when possible to reduce duplication. Note: It's also a good idea to set "private" to true when using this feature.
