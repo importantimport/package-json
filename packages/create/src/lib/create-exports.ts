@@ -16,7 +16,6 @@ export const createExports = ({ exports, files, main, module, type, types }: Pac
   exports: exports ?? {
     '.': type === 'module'
       ? moduleExports
-      // eslint-disable-next-line sonarjs/no-nested-conditional
       : type === 'commonjs'
         ? commonjsExports
         : {

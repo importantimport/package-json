@@ -16,6 +16,10 @@ Auto-generated `package.json` types.
 
 ```ts
 import type { PackageJson } from '@package-json/types'
+
+export const packageJson: PackageJson = {
+  ...json
+}
 ```
 
 ###### define

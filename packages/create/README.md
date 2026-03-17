@@ -35,7 +35,6 @@ import { create } from '@package-json/create'
 const json = create()
 
 export default json
-
 ```
 
 <!-- /automd -->
@@ -58,7 +57,6 @@ export default defineConfig({
   },
   type: 'module',
 })
-
 ```
 
 <!-- /automd -->

@@ -1,4 +1,5 @@
 import sort from '@package-json/sort'
+
 import { describe, expect, it } from 'vitest'
 
 import { version } from '../package.json'

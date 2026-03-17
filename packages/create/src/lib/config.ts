@@ -2,6 +2,7 @@ import type { PackageJson } from '@package-json/types'
 
 import { loadConfig } from 'unconfig'
 
+// eslint-disable-next-line antfu/no-top-level-await
 export const { config, sources } = await loadConfig<PackageJson>({
   sources: [
     {
