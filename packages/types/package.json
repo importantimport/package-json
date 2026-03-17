@@ -29,6 +29,8 @@
   ],
   "scripts": {
     "build": "pkgroll",
-    "build:upstream": "tsx scripts/build.ts"
+    "build:upstream": "tsx scripts/build.ts",
+    "test": "vitest run",
+    "test:watch": "vitest watch"
   }
 }
