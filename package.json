@@ -19,16 +19,16 @@
     "lint:fix": "eslint --fix ."
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5.3.0",
-    "@moeru/eslint-config": "0.1.0-beta.10",
-    "@moeru/tsconfig": "^0.1.0-beta.10",
-    "@types/node": "^24.4.0",
-    "automd": "^0.4.1",
-    "bumpp": "^10.2.3",
-    "eslint": "^9.35.0",
-    "json-schema-to-typescript": "^15.0.2",
-    "pkgroll": "^2.15.4",
-    "tsx": "^4.20.5",
-    "vitest": "^3.2.4"
+    "@antfu/eslint-config": "7.4.3",
+    "@moeru/eslint-config": "0.1.0-beta.17",
+    "@moeru/tsconfig": "^0.1.0-beta.17",
+    "@types/node": "^25.5.0",
+    "automd": "^0.4.3",
+    "bumpp": "^11.0.1",
+    "eslint": "^10.0.3",
+    "json-schema-to-typescript": "^15.0.4",
+    "pkgroll": "^2.27.0",
+    "tsx": "^4.21.0",
+    "vitest": "^4.1.0"
   }
 }
