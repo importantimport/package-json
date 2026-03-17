@@ -29,6 +29,6 @@
   ],
   "scripts": {
     "build": "pkgroll",
-    "build:upstream": "tsx build.ts"
+    "build:upstream": "tsx scripts/build.ts"
   }
 }

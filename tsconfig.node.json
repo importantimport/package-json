@@ -1,4 +1,4 @@
 {
   "extends": "@moeru/tsconfig/node.json",
-  "include": ["*.config.ts", "*.config.js"]
+  "include": ["*.config.ts", "*.config.js", "**/scripts/*.ts"]
 }
