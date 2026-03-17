@@ -73,7 +73,6 @@ export type JSONSchemaForNPMPackageJsonFiles = {
         | "MS-PL"
         | "UNLICENSED"
       );
-  author?: Person;
   /**
    * A list of people who contributed to this package.
    */

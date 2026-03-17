@@ -22,7 +22,7 @@ const patchedDefinitions = [
 
 const deprecatedProperties = ['bundledDependencies', 'licenses', 'preferGlobal']
 const externalProperties = ['ava', 'eslintConfig', 'jscpd', 'jspm', 'prettier', 'release', 'stylelint']
-const patchedProperties = ['exports', 'engines', 'esnext', 'volta']
+const patchedProperties = ['author', 'exports', 'engines', 'esnext', 'volta']
 
 const types = await compile({
   ...schema,

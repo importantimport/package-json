@@ -1,7 +1,9 @@
 import type { JSONSchemaForNPMPackageJsonFiles } from '../types'
+import type { Author } from './author'
 import type { Exports } from './exports'
 
 export interface PackageJson extends JSONSchemaForNPMPackageJsonFiles {
+  author?: Author
   engines?: {
     [k: string]: string | undefined
     node?: string
