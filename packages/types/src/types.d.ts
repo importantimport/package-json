@@ -273,24 +273,6 @@ export type JSONSchemaForNPMPackageJsonFiles = {
    * Defines which package manager is expected to be used when working on the current project. This field is currently experimental and needs to be opted-in; see https://nodejs.org/api/corepack.html
    */
   packageManager?: string;
-  engines?: {
-    node?: string;
-    [k: string]: string;
-  };
-  /**
-   * Defines which tools and versions are expected to be used when Volta is installed.
-   */
-  volta?: {
-    /**
-     * The value of that entry should be a path to another JSON file which also has a "volta" section
-     */
-    extends?: string;
-    /**
-     * This interface was referenced by `undefined`'s JSON-Schema definition
-     * via the `patternProperty` "(node|npm|pnpm|yarn)".
-     */
-    [k: string]: string;
-  };
   engineStrict?: boolean;
   /**
    * Specify which operating systems your module will run on.
@@ -347,16 +329,6 @@ export type JSONSchemaForNPMPackageJsonFiles = {
    * An ECMAScript module ID that is the primary entry point to your program.
    */
   module?: string;
-  /**
-   * A module ID with untranspiled code that is the primary entry point to your program.
-   */
-  esnext?:
-    | string
-    | {
-        main?: string;
-        browser?: string;
-        [k: string]: string;
-      };
   /**
    * Allows packages within a directory to depend on one another using direct linking of local files. Additionally, dependencies within a workspace are hoisted to the workspace root when possible to reduce duplication. Note: It's also a good idea to set "private" to true when using this feature.
    */
